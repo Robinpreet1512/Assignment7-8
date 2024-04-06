@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dice Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Dice Game</h1>
+<div id ="dice-container">
+  <img id="dice1" class="dice" src="dice1 .png" alt="Dice 1">
+  <img id="dice2" class="dice" src="dice2 .png" alt="Dice 2">
+</div>
+<div>
+  <button id="rollButton">Roll Dice</button>
+</div>
+<div id="score">
+  <p>Player 1 Score: <span id="player1Score">0</span></p>
+  <p>Player 2 Score: <span id="player2Score">0</span></p>
+</div>
+<div id="winner"></div>
+
+<script>
+  const diceImages = [
+    "dice1.png",
+    "dice2.png",
+    "dice3.png",
+    "dice4.png",
+    "dice5.png",
+    "dice5.png",
+    "dice6.png"
+  ];
+
+  const dice1Element = document.getElementById("dice1");
+  const dice2Element = document.getElementById("dice2");
+  const rollButton = document.getElementById("rollButton");
+  const player1ScoreElement = document.getElementById("player1Score");
+  const player2ScoreElement = document.getElementById("player2Score");
+  const winnerElement = document.getElementById("winner");
+
+  let player1Score = 0;
+  let player2Score = 0;
+
+  rollButton.addEventListener("click", function() {
+    const dice1Value = Math.floor(Math.random() * 6) + 1;
+    const dice2Value = Math.floor(Math.random() * 6) + 1;
+
+    dice1Element.src = diceImages[dice1Value - 1];
+    dice2Element.src = diceImages[dice2Value - 1];
+
+    const scoreDifference = Math.abs(dice1Value - dice2Value);
+    if (dice1Value > dice2Value) {
+      player1Score += scoreDifference;
+    } else if (dice2Value > dice1Value) {
+      player2Score += scoreDifference;
+    }
+
+    player1ScoreElement.textContent = player1Score;
+    player2ScoreElement.textContent = player2Score;
+
+    if (player1Score >= 20) {
+      winnerElement.textContent = "Player 1 Wins!";
+    } else if (player2Score >= 20) {
+      winnerElement.textContent = "Player 2 Wins!";
+    } else {
+      winnerElement.textContent = "";
+    }
+  });
+</script>
+</body>
+</html>

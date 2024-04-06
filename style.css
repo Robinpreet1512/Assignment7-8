@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#container {
+    text-align: center;
+}
+
+.dice {
+    width: 128px;
+    height: 128px;
+    margin: 10px;
+    padding: 5px;
+}
+
+#rollButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#rollButton:hover {
+    background-color: #45a049;
+}
+
+#winner {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+}
+
+#dice-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
